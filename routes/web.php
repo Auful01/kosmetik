@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ConsultController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TreatmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,9 +34,7 @@ Route::middleware(['auth', 'role:0'])->group(function () {
     });
 
     Route::resource('doctor-consul', ConsultController::class);
-    Route::get('reservasi-ad', function () {
-        return view('admin.reservasi');
-    });
+
     Route::get('doctor', [DoctorController::class, 'indexUser'])->name('doctor');
     Route::resource('transaction', TransactionController::class);
 });
@@ -43,12 +43,14 @@ Route::middleware(['auth', 'role:1'])->group(function () {
     Route::get('dashboard', function () {
         return view('admin.dashboard');
     });
+    Route::get('reservasi-ad', function () {
+        return view('admin.reservasi');
+    });
     Route::get('customer', function () {
         return view('admin.customer');
     });
-    Route::get('treatment', function () {
-        return view('admin.treatment');
-    });
+    Route::resource('category', CategoryController::class);
+    Route::resource('treatment', TreatmentController::class);
     Route::resource('doctor-list', DoctorController::class);
     // Route::resource('doctor-consul', ConsultController::class);
     Route::resource('reservasi', ReservationController::class);

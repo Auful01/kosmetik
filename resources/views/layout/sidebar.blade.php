@@ -113,7 +113,7 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="pages/widgets.html" class="nav-link">
                     <i class="nav-icon fas fa-power-off"></i>
                     <p>
@@ -121,7 +121,7 @@
                         <span class="right badge badge-danger">New</span>
                     </p>
                 </a>
-            </li>
+            </li> --}}
             @elseif (Auth::user()->role ==1)
             <li class="nav-item">
                 <a href="/dashboard" class="nav-link">
@@ -134,7 +134,7 @@
             </li>
             <li class="nav-item">
                 <a href="/customer" class="nav-link">
-                    <i class="nav-icon fas fa-home"></i>
+                    <i class="nav-icon fas fa-users"></i>
                     <p>
                         User
                         <span class="right badge badge-danger">New</span>
@@ -142,8 +142,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/treatment" class="nav-link">
-                    <i class="nav-icon fas fa-home"></i>
+                <a href="{{route('treatment.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-medkit"></i>
                     <p>
                         Layanan Treatment
                         <span class="right badge badge-danger">New</span>
@@ -152,7 +152,7 @@
             </li>
             <li class="nav-item">
                 <a href="{{route('doctor-list.index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-home"></i>
+                    <i class="nav-icon fas fa-user-md"></i>
                     <p>
                         Konsultasi Dokter
                         <span class="right badge badge-danger">New</span>
@@ -161,14 +161,34 @@
             </li>
             <li class="nav-item">
                 <a href="/reservasi-ad" class="nav-link">
-                    <i class="nav-icon fas fa-home"></i>
+                    <i class="nav-icon fas fa-clipboard-list"></i>
                     <p>
                         Reservasi
                         <span class="right badge badge-danger">New</span>
                     </p>
                 </a>
             </li>
+
             @endif
+            <li class="nav-item">
+                <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
+                    <i class="nav-icon fas fa-sign-out-alt"></i>
+                    <p>
+                        Logout
+                        <span class="right badge badge-danger">New</span>
+                    </p>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </li>
+            {{-- <a class="dropdown-item" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+             {{ __('Logout') }}
+         </a> --}}
+
+
         </ul>
 
 

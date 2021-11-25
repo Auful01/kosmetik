@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Treatment;
 use Illuminate\Http\Request;
 
 class TreatmentController extends Controller
@@ -13,7 +15,9 @@ class TreatmentController extends Controller
      */
     public function index()
     {
-        //
+        $treatment = Treatment::all();
+        $category = Category::all();
+        return view('admin.treatment', ['treatment' => $treatment, 'category' => $category]);
     }
 
     /**
@@ -34,7 +38,20 @@ class TreatmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $img_name = '';
+        if ($request->file('photo')) {
+            $img_name = $request->file('photo')->store('photo', 'public');
+        }
+        // return $img_name;
+        Treatment::create([
+            'category_id' => $request->category_id,
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'photo' => $img_name
+        ]);
+
+        return redirect()->route('treatment.index');
     }
 
     /**
