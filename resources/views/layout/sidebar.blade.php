@@ -33,7 +33,7 @@
                     <i class="nav-icon fas fa-home"></i>
                     <p>
                         Home
-                        <span class="right badge badge-danger">New</span>
+
                     </p>
                 </a>
             </li>
@@ -91,7 +91,7 @@
                     <i class="nav-icon fas fa-user-md"></i>
                     <p>
                         Doctor
-                        <span class="right badge badge-danger">New</span>
+
                     </p>
                 </a>
             </li>
@@ -100,7 +100,7 @@
                     <i class="nav-icon fas fa-money-bill-wave"></i>
                     <p>
                         Transaction
-                        <span class="right badge badge-danger">New</span>
+
                     </p>
                 </a>
             </li>
@@ -109,7 +109,7 @@
                     <i class="nav-icon fas fa-clipboard-list"></i>
                     <p>
                         Reservation
-                        <span class="right badge badge-danger">New</span>
+
                     </p>
                 </a>
             </li>
@@ -118,7 +118,7 @@
                     <i class="nav-icon fas fa-power-off"></i>
                     <p>
                         Logout
-                        <span class="right badge badge-danger">New</span>
+
                     </p>
                 </a>
             </li> --}}
@@ -128,7 +128,7 @@
                     <i class="nav-icon fas fa-home"></i>
                     <p>
                         Dashboard
-                        <span class="right badge badge-danger">New</span>
+
                     </p>
                 </a>
             </li>
@@ -137,7 +137,7 @@
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         User
-                        <span class="right badge badge-danger">New</span>
+
                     </p>
                 </a>
             </li>
@@ -146,7 +146,7 @@
                     <i class="nav-icon fas fa-medkit"></i>
                     <p>
                         Layanan Treatment
-                        <span class="right badge badge-danger">New</span>
+
                     </p>
                 </a>
             </li>
@@ -155,7 +155,7 @@
                     <i class="nav-icon fas fa-user-md"></i>
                     <p>
                         Konsultasi Dokter
-                        <span class="right badge badge-danger">New</span>
+
                     </p>
                 </a>
             </li>
@@ -164,7 +164,7 @@
                     <i class="nav-icon fas fa-clipboard-list"></i>
                     <p>
                         Reservasi
-                        <span class="right badge badge-danger">New</span>
+
                     </p>
                 </a>
             </li>
@@ -175,18 +175,13 @@
                     <i class="nav-icon fas fa-sign-out-alt"></i>
                     <p>
                         Logout
-                        <span class="right badge badge-danger">New</span>
+
                     </p>
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
             </li>
-            {{-- <a class="dropdown-item" href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                          document.getElementById('logout-form').submit();">
-             {{ __('Logout') }}
-         </a> --}}
 
 
         </ul>
