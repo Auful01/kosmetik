@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -14,8 +15,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $order = Order::all();
-        return view('user.transaction', ['order' => $order]);
+        $reservation = Reservation::all();
+        return view('user.transaction', ['reservation' => $reservation]);
     }
 
     /**
@@ -38,12 +39,11 @@ class OrderController extends Controller
     {
         // return $request;
         $user = auth()->user()->id;
-        Order::create([
+        Reservation::create([
             'user_id' => $user,
-            'doctor_id' => $request->doctor_id,
+            'treatment_id' => $request->treatment_id,
             'date' => $request->date,
             'time' => $request->time,
-            'total' => $request->price,
         ]);
         return redirect()->route('transaction.index');
     }
@@ -54,7 +54,7 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($id)
     {
         //
     }
@@ -65,7 +65,7 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit($id)
     {
         //
     }
@@ -77,7 +77,7 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -88,7 +88,7 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy($id)
     {
         //
     }

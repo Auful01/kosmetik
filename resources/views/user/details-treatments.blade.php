@@ -55,7 +55,7 @@
           </button>
         </div>
         <div class="modal-body">
-            <form action="{{route('order.store')}}" method="POST">
+            <form action="{{route('reservasi.store')}}" method="POST">
                 @csrf
                 <input type="text" value="{{Request::segment(2)}}" name="treatment_id" hidden>
                 <div class="form-group">

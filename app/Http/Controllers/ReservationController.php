@@ -15,8 +15,8 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservation = Reservation::all();
-        return view('user.reservasi');
+        $reservation = Reservation::with('treatment')->get();
+        return view('user.transaction', ['reservation' => $reservation]);
     }
 
     /**
@@ -37,17 +37,14 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user()->id;
         Reservation::create([
-            'user_id' => auth()->user()->id,
-            'total' => $request->total,
+            'user_id' => $user,
+            'treatment_id' => $request->treatment_id,
+            'date' => $request->date,
+            'time' => $request->time,
+            'price' => $request->price,
         ]);
-
-        Customer::create([
-            'user_id' => auth()->user()->id,
-            'ktp' => $request->ktp,
-            ''
-        ]);
-
         return redirect()->route('reservasi.index');
     }
 

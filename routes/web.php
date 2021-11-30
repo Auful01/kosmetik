@@ -38,6 +38,7 @@ Route::middleware(['auth', 'role:0'])->group(function () {
     Route::get('doctor', [DoctorController::class, 'indexUser'])->name('doctor');
     Route::resource('transaction', TransactionController::class);
     Route::resource('order', OrderController::class);
+    Route::resource('reservasi', ReservationController::class);
 });
 
 Route::middleware(['auth', 'role:1'])->group(function () {
@@ -53,7 +54,6 @@ Route::middleware(['auth', 'role:1'])->group(function () {
     Route::resource('treatment', TreatmentController::class);
     Route::resource('doctor-list', DoctorController::class);
     // Route::resource('doctor-consul', ConsultController::class);
-    Route::resource('reservasi', ReservationController::class);
 });
 
 

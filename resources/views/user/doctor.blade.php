@@ -24,18 +24,20 @@
         </div>
         @endforeach
 
-        <div class="col-md-3">
-            <img src="https://placeimg.com/640/480/any" style="height: 300px" alt="">
-            <small class="text-muted">Dokter Kulit</small>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex est veritatis doloremque corrupti voluptatum a, cumque, perferendis tempore nihil amet vel. Modi, enim ipsam fugiat molestias deleniti vel sit quis?</p>
-            <a href="" class="btn btn-warning" >Konsultasi</a>
-        </div>
-        <div class="col-md-3">
-            <img src="https://placeimg.com/640/480/any" style="height: 300px" alt="">
-            <small class="text-muted">Dokter Kulit</small>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex est veritatis doloremque corrupti voluptatum a, cumque, perferendis tempore nihil amet vel. Modi, enim ipsam fugiat molestias deleniti vel sit quis?</p>
-            <a href="" class="btn btn-warning" >Konsultasi</a>
-        </div>
     </div>
+
+        {{-- <div class="col-md-3">
+            <img src="https://placeimg.com/640/480/any" style="height: 300px" alt="">
+            <small class="text-muted">Dokter Kulit</small>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex est veritatis doloremque corrupti voluptatum a, cumque, perferendis tempore nihil amet vel. Modi, enim ipsam fugiat molestias deleniti vel sit quis?</p>
+            <a href="" class="btn btn-warning" >Konsultasi</a>
+        </div>
+        <div class="col-md-3">
+            <img src="https://placeimg.com/640/480/any" style="height: 300px" alt="">
+            <small class="text-muted">Dokter Kulit</small>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex est veritatis doloremque corrupti voluptatum a, cumque, perferendis tempore nihil amet vel. Modi, enim ipsam fugiat molestias deleniti vel sit quis?</p>
+            <a href="" class="btn btn-warning" >Konsultasi</a>
+        </div>
+    </div> --}}
 </section>
 @endsection

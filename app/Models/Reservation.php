@@ -29,4 +29,14 @@ class Reservation extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    /**
+     * Get the treatment that owns the Reservation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function treatment()
+    {
+        return $this->belongsTo(Treatment::class, 'treatment_id');
+    }
 }

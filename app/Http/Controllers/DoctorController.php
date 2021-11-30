@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctor;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -54,6 +55,10 @@ class DoctorController extends Controller
             'specialist' => $request->specialist,
             'price' => $request->price,
             'photo' => $img_name,
+        ]);
+
+        Schedule::create([
+            'doctor_id' => $doctor->id,
         ]);
 
         // return $doctor;

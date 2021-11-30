@@ -96,11 +96,10 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{route('transaction.index')}}" class="nav-link">
+                <a href="{{route('reservasi.index')}}" class="nav-link">
                     <i class="nav-icon fas fa-money-bill-wave"></i>
                     <p>
                         Transaction
-
                     </p>
                 </a>
             </li>
