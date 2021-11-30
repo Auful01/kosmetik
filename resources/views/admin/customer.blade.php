@@ -9,27 +9,33 @@
             <a href="" class="btn btn-primary mb-3">Tambah Customer</a>
             <table id="myTable" class="table">
                 <thead>
-                    <th>No. Reservasi</th>
-                    <th>Customer</th>
-                    <th>No. Telp</th>
-                    <th>Total</th>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Alamat</th>
+                    <th>Telp</th>
                     <th>Status</th>
+                    <th>Action</th>
                 </thead>
                 <tbody>
+                    @foreach ($user as $u)
                     <tr class="p-2">
                         <td>1</td>
-                        <td>Coba</td>
-                        <td>08222</td>
-                        <td>100000</td>
-                        <td><span class="alert alert-success p-2">Sukses</span></td>
+                        <td>{{$u->name}}</td>
+                        <td>{{$u->email}}</td>
+                        <td>Sidoarjo</td>
+                        <td>08221723721</td>
+                        <td>@if ($u->role == 1)
+                            <span class="alert alert-success">Admin</span>
+                            @else
+                            <span class="alert alert-info">User</span>
+                        @endif</td>
+                        <td>
+                            <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        </td>
                     </tr>
-                    <tr class="p-2">
-                        <td>1</td>
-                        <td>Coba</td>
-                        <td>08222</td>
-                        <td>100000</td>
-                        <td><span class="alert alert-success p-2">Sukses</span></td>
-                    </tr>
+                    @endforeach
+
                 </tbody>
             </table>
         </div>

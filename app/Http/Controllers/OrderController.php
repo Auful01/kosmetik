@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-
-        return $category;
+        $order = Order::all();
+        return view('user.transaction', ['order' => $order]);
     }
 
     /**
@@ -37,17 +36,25 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create($request->all());
-        return redirect()->route('treatment.index');
+        // return $request;
+        $user = auth()->user()->id;
+        Order::create([
+            'user_id' => $user,
+            'doctor_id' => $request->doctor_id,
+            'date' => $request->date,
+            'time' => $request->time,
+            'total' => $request->price,
+        ]);
+        return redirect()->route('transaction.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Order $order)
     {
         //
     }
@@ -55,10 +62,10 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Order $order)
     {
         //
     }
@@ -67,10 +74,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Order $order)
     {
         //
     }
@@ -78,10 +85,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Order $order)
     {
         //
     }

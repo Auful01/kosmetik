@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Reservation;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -16,9 +17,11 @@ class TransactionController extends Controller
     public function index()
     {
         $user = auth()->user()->id;
+        // $doctor = Doctr
         $reservasi = Reservation::with('user')->where('user_id', $user);
         $reservasi_detail = Reservation::with('user', 'reservation')->where('user', $user);
-        return view('user.transaction', ['reservasi_detail' => $reservasi_detail]);
+        $order = Order::with('user')->where('user_id', $user)->get();
+        return view('user.transaction', ['order' => $order]);
     }
 
     /**

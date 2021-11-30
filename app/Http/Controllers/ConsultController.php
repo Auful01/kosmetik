@@ -13,11 +13,9 @@ class ConsultController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $doctor = Doctor::all();
-        $schedule = Schedule::with('doctor')->where('doctor_id', $id);
-        return view('user.doctor-consul', ['doctor' => $doctor, 'schedule' => $schedule]);
+        //
     }
 
     /**
@@ -49,7 +47,9 @@ class ConsultController extends Controller
      */
     public function show($id)
     {
-        //
+        $doctor = Doctor::all();
+        $schedule = Schedule::with('doctor')->where('doctor_id', $id)->first();
+        return view('user.doctor-consul', ['doctor' => $doctor, 'schedule' => $schedule]);
     }
 
     /**

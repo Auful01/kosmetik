@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddTableReservation extends Migration
+class AddReservTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,8 +16,11 @@ class AddTableReservation extends Migration
         Schema::create('reservation', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->integer('total');
+            $table->unsignedBigInteger('treatment_id')->nullable();
+            $table->date('date');
+            $table->time('time');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('treatment_id')->references('id')->on('treatments')->onDelete('cascade');
             $table->enum('user_confirm', [0, 1, 2])->default(1);
             $table->enum('status', [0, 1, 2])->default(0);
             $table->timestamps();

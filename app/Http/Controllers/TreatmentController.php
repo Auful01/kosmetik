@@ -15,9 +15,16 @@ class TreatmentController extends Controller
      */
     public function index()
     {
-        $treatment = Treatment::all();
+        $treatment = Treatment::with('category')->get();
         $category = Category::all();
         return view('admin.treatment', ['treatment' => $treatment, 'category' => $category]);
+    }
+
+    public function indexUser()
+    {
+        // return $id;
+        // $treatment = Treatment::with('category')->where('category_id', $id)->get();
+        // return view('user.treatments', ['treatment' => $treatment]);
     }
 
     /**
@@ -42,7 +49,7 @@ class TreatmentController extends Controller
         if ($request->file('photo')) {
             $img_name = $request->file('photo')->store('photo', 'public');
         }
-        // return $img_name;
+        // return $request;
         Treatment::create([
             'category_id' => $request->category_id,
             'name' => $request->name,
@@ -62,9 +69,23 @@ class TreatmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $treatment = Treatment::with('category')->where('category_id', $id)->get();
+        return view('user.treatments', ['treatment' => $treatment]);
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function showDetail($id)
+    {
+        // return $id;
+        $treatment = Treatment::find($id);
+        return view('user.details-treatments', ['treatment' => $treatment]);
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -96,6 +117,7 @@ class TreatmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Treatment::find($id)->delete();
+        return redirect()->route('transaction.index');
     }
 }

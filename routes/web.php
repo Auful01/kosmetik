@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ConsultController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TreatmentController;
 use Illuminate\Support\Facades\Route;
@@ -26,17 +29,15 @@ Route::middleware(['auth', 'role:0'])->group(function () {
     Route::get('/', function () {
         return view('user.home');
     })->name('user-home');
-    Route::get('coba', function () {
-        return view('user.treatments');
-    });
-    Route::get('detail', function () {
-        return view('user.details-treatments');
-    });
+    Route::resource('treatment-user', TreatmentController::class);
+    Route::get('detail-treatment/{id}', [TreatmentController::class, 'showDetail'])->name('detail-treatment');
+    Route::get('detail/{id}', [TreatmentController::class, 'showDetail']);
 
     Route::resource('doctor-consul', ConsultController::class);
 
     Route::get('doctor', [DoctorController::class, 'indexUser'])->name('doctor');
     Route::resource('transaction', TransactionController::class);
+    Route::resource('order', OrderController::class);
 });
 
 Route::middleware(['auth', 'role:1'])->group(function () {
@@ -46,9 +47,8 @@ Route::middleware(['auth', 'role:1'])->group(function () {
     Route::get('reservasi-ad', function () {
         return view('admin.reservasi');
     });
-    Route::get('customer', function () {
-        return view('admin.customer');
-    });
+    Route::resource('customer', CustomerController::class);
+    Route::resource('schedule', ScheduleController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('treatment', TreatmentController::class);
     Route::resource('doctor-list', DoctorController::class);

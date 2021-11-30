@@ -20,7 +20,7 @@
             <div class="text-center"><img src="{{asset('storage/'. $d->photo)}}" style="height: 300px" alt=""></div>
             <small class="text-muted">Dokter {{$d->specialist}}</small>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex est veritatis doloremque corrupti voluptatum a, cumque, perferendis tempore nihil amet vel. Modi, enim ipsam fugiat molestias deleniti vel sit quis?</p>
-            <a href="{{route('doctor-consul.index', $d->id)}}" class="btn btn-warning" >Konsultasi</a>
+            <a href="{{route('doctor-consul.show', $d->id)}}" class="btn btn-warning" >Konsultasi</a>
         </div>
         @endforeach
 

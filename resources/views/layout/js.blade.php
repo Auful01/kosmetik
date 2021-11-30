@@ -1,5 +1,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     $(document).ready( function () {
         $('#myTable').DataTable();
@@ -19,6 +20,85 @@
         $('.price').val(price);
 
     })
+
+    $('.btn-editTreatment').on('click', function () {
+        var name = $(this).data('name')
+        var desc = $(this).data('description')
+        var photo = $(this).data('photo')
+        var cat = $(this).data('kategori')
+        var price = $(this).data('harga')
+        var url = $(this).data('url')
+        $('.name').val(name)
+        $('.description').val(desc)
+        $('.photo').attr('src',photo)
+        $('.cat').val(cat)
+        $('.price').val(price)
+        $('.url').attr('action', url)
+        // console.log(cat);
+
+        $.ajax({
+            url : "/category",
+            type : "GET",
+            dataType : "json",
+            success: function (data) {
+                var formOpt = "";
+                $.each(data, function (idx, obj) {
+                    if (obj.id == cat.id) {
+                        formOpt += "<option value='" + obj.id + "' selected>" + obj.category + "</option>"
+                    }else{
+                        formOpt += "<option value='" + obj.id + "'>" + obj.category + "</option>"
+                    }
+                });
+                $('#treatment-select').append(formOpt);
+            }
+        })
+    })
+
+    $('.add-schedule').on('click', function () {
+        var id = $(this).data('id')
+        $('.id').val(id)
+    })
+
+    function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        const picker = document.getElementById('date1');
+        picker.addEventListener('input', function(e){
+        var day = new Date(this.value).getUTCDay();
+        if([6,0].includes(day)){
+            e.preventDefault();
+            this.value = '';
+            swal({
+                title: "Error!",
+                text: "Weekend Libur!",
+                icon: "error",
+                button: "ok",
+                });
+        }
+        });
+
+        $('.btn-order').on('click', function () {
+            var harga = $(this).data('harga')
+            $('.price').val(harga)
+        })
+
+        $('.btn-reservasi').on('click', function () {
+            var harga = $(this).data('harga')
+            $('.price').val(harga)
+        })
 </script>
 
  <!-- jQuery -->

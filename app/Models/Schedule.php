@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Doctor;
 
 class Schedule extends Model
 {
@@ -25,4 +26,14 @@ class Schedule extends Model
         'friday_start',
         'friday_end',
     ];
+
+    /**
+     * Get the doctor that owns the Schedule
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class, 'doctor_id');
+    }
 }

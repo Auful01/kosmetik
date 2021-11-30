@@ -49,37 +49,37 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="coba" class="nav-link active">
+                        <a href="{{route('treatment-user.show', 1)}}" class="nav-link {{Request::segment(2) == 1 ? 'active' : ''}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Acne</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="coba" class="nav-link">
+                        <a href="{{url('treatment-user/2')}}" class="nav-link {{Request::segment(2) == 2? 'active' : ''}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Body Treatment</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="coba" class="nav-link">
+                        <a href="{{url('treatment-user/3')}}" class="nav-link {{Request::segment(2) == 3 ? 'active' : ''}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Pigmentation</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="coba" class="nav-link">
+                        <a href="{{url('treatment-user/4')}}" class="nav-link {{Request::segment(2) == 4 ? 'active' : ''}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Rejuvenating</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="coba" class="nav-link">
+                        <a href="{{url('treatment-user/5')}}" class="nav-link {{Request::segment(2) == 5 ? 'active' : ''}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Scar</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="./index3.html" class="nav-link">
+                        <a href="{{url('treatment-user/6')}}" class="nav-link {{Request::segment(2) == 6 ? 'active' : ''}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>White & Glow</p>
                         </a>
@@ -133,7 +133,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/customer" class="nav-link">
+                <a href="{{route('customer.index')}}" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         User
@@ -142,7 +142,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{route('treatment.index')}}" class="nav-link">
+                <a href="{{route('treatment.index')}}" class="nav-link {{Request::segment(1) == 'treatment' ? 'active' : ''}}">
                     <i class="nav-icon fas fa-medkit"></i>
                     <p>
                         Layanan Treatment

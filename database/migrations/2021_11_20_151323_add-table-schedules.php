@@ -16,16 +16,16 @@ class AddTableSchedules extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('doctor_id');
-            $table->time('monday_start')->nullable();
-            $table->time('monday_end')->nullable();
-            $table->time('tuesday_start')->nullable();
-            $table->time('tuesday_end')->nullable();
-            $table->time('wednesday_start')->nullable();
-            $table->time('wednesday_end')->nullable();
-            $table->time('thursday_start')->nullable();
-            $table->time('thursday_end')->nullable();
-            $table->time('friday_start')->nullable();
-            $table->time('friday_end')->nullable();
+            $table->time('monday_start')->nullable()->default('00:00');
+            $table->time('monday_end')->nullable()->default('00:00');
+            $table->time('tuesday_start')->nullable()->default('00:00');
+            $table->time('tuesday_end')->nullable()->default('00:00');
+            $table->time('wednesday_start')->nullable()->default('00:00');
+            $table->time('wednesday_end')->nullable()->default('00:00');
+            $table->time('thursday_start')->nullable()->default('00:00');
+            $table->time('thursday_end')->nullable()->default('00:00');
+            $table->time('friday_start')->nullable()->default('00:00');
+            $table->time('friday_end')->nullable()->default('00:00');
             $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
             $table->timestamps();
         });

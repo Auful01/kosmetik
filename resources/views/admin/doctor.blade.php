@@ -13,7 +13,7 @@
                     <th>Job</th>
                     <th>Foto</th>
                     <th>Harga</th>
-                    <th>Action</th>
+                    <th>Status</th>
                 </thead>
                 <tbody>
                     @foreach ($doctor as $d)
@@ -24,15 +24,17 @@
                         <td><img src="{{asset('storage/'.$d->photo)}}"  class="rounded" style="height: 100px" alt=""></td>
                         <td>{{$d->price}}</td>
                         <td>
-                            <button class="btn btn-warning btn-editDokter" data-toggle="modal" data-target="#edit-dokter" data-id="{{$d->id}}" data-name="{{$d->name}}" data-specialist="{{$d->specialist}}" data-price="{{$d->price}}" data-photo="{{asset('storage/'. $d->photo)}}" data-url="{{route('doctor-list.update', $d->id)}}"><i class="fas fa-edit"></i></button>
                             {{-- <button class="btn btn-warning btn-editDokter" data-toggle="modal" data-target="#edit-dokter" data-id="{{$d->id}}" ></i></button> --}}
-                            <a href="" class="btn btn-primary"  data-toggle="modal" data-target="#tambah-jadwal"><i class="fas fa-clock"></i></a>
                             <form action="{{route('doctor-list.destroy', $d->id)}}" method="POST">
+                            <a href="" class="btn btn-primary add-schedule"  data-toggle="modal" data-target="#tambah-jadwal" data-id="{{$d->id}}"><i class="fas fa-clock"></i></a>
+                            <a class="btn btn-warning btn-editDokter" data-toggle="modal" data-target="#edit-dokter" data-id="{{$d->id}}" data-name="{{$d->name}}" data-specialist="{{$d->specialist}}" data-price="{{$d->price}}" data-photo="{{asset('storage/'. $d->photo)}}" data-url="{{route('doctor-list.update', $d->id)}}"><i class="fas fa-edit"></i></a>
+
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" type="submit" onclick="return confirm('Apakah anda ingin menghapus data ini?')"><i class="fas fa-trash"></i></button>
                             </form>
                         </td>
+
                     </tr>
                     @endforeach
                 </tbody>
@@ -142,8 +144,9 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="{{route('doctor-list.store')}}" method="POST" enctype="multipart/form-data">
+          <form action="{{route('schedule.store')}}" method="POST" enctype="multipart/form-data">
               @csrf
+              <input type="text" class="id" name="doctor_id" hidden>
               <div class="form-group">
                   <label for="">Senin</label>
                   <div class="row d-flex justify-content-around">
@@ -151,37 +154,37 @@
                       <p class="col-md-1" align="center">-</p>
                       <input type="time" name="monday_end" class="form-control col-md-5">
                   </div>
-              </div>z
+              </div>
               <div class="form-group">
                   <label for="">Selasa</label>
                   <div class="row d-flex justify-content-around">
-                      <input type="time" name="monday_start" class="form-control col-md-5">
+                      <input type="time" name="tuesday_start" class="form-control col-md-5">
                       <p class="col-md-1" align="center">-</p>
-                      <input type="time" name="monday_end" class="form-control col-md-5">
+                      <input type="time" name="tuesday_end" class="form-control col-md-5">
                   </div>
               </div>
               <div class="form-group">
                   <label for="">Rabu</label>
                   <div class="row d-flex justify-content-around">
-                      <input type="time" name="monday_start" class="form-control col-md-5">
+                      <input type="time" name="wednesday_start" class="form-control col-md-5">
                       <p class="col-md-1" align="center">-</p>
-                      <input type="time" name="monday_end" class="form-control col-md-5">
+                      <input type="time" name="wednesday_end" class="form-control col-md-5">
                   </div>
               </div>
               <div class="form-group">
                   <label for="">Kamis</label>
                   <div class="row d-flex justify-content-around">
-                      <input type="time" name="monday_start" class="form-control col-md-5">
+                      <input type="time" name="thursday_start" class="form-control col-md-5">
                       <p class="col-md-1" align="center">-</p>
-                      <input type="time" name="monday_end" class="form-control col-md-5">
+                      <input type="time" name="thursday_end" class="form-control col-md-5">
                   </div>
               </div>
               <div class="form-group">
                   <label for="">Jumat</label>
                   <div class="row d-flex justify-content-around">
-                      <input type="time" name="monday_start" class="form-control col-md-5">
+                      <input type="time" name="friday_start" class="form-control col-md-5">
                       <p class="col-md-1" align="center">-</p>
-                      <input type="time" name="monday_end" class="form-control col-md-5">
+                      <input type="time" name="friday_end" class="form-control col-md-5">
                   </div>
               </div>
 

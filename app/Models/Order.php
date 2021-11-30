@@ -4,24 +4,36 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Doctor;
+use App\Models\User;
 
-class Reservation extends Model
+class Order extends Model
 {
     use HasFactory;
 
-    protected $table = 'reservation';
     protected $fillable = [
         'id',
         'user_id',
-        'treatment_id',
+        'doctor_id',
+        'total',
         'date',
         'time',
-        'user_confirm',
-        'status',
+        'confirm',
+        'status'
     ];
 
     /**
-     * Get the user that owns the Reservation
+     * Get the doctor that owns the Order
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class, 'doctor_id');
+    }
+
+    /**
+     * Get the user that owns the Order
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
