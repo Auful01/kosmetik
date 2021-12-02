@@ -3,13 +3,16 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ConsultController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TreatmentController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Ui\Presets\Vue;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,9 +45,7 @@ Route::middleware(['auth', 'role:0'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:1'])->group(function () {
-    Route::get('dashboard', function () {
-        return view('admin.dashboard');
-    });
+    Route::get('dashboard', [DashboardController::class, 'index']);
     Route::get('reservasi-ad', function () {
         return view('admin.reservasi');
     });
@@ -56,6 +57,7 @@ Route::middleware(['auth', 'role:1'])->group(function () {
     // Route::resource('doctor-consul', ConsultController::class);
 });
 
+Route::get('/profile/{id}', [UserController::class, 'show']);
 
 // Route::get('reservasi', function () {
 //     return view('user.reservasi');

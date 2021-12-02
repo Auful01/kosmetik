@@ -2,20 +2,21 @@
 
 @section('content')
 <section>
-    <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p class="lead">
-          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-        </p>
+    <div class="jumbotron" style="margin-top: -80px ; margin-left: -60px ; max-width: 108%; height: 400px; background-repeat: no-repeat; background-size: cover;background-image: url({{asset('images/jumbotron.png')}});">
+            <div class="text-center">
+                <img src="{{asset('images/relax.png')}}" class="mt-5" height="100px" alt="">
+                <span style="height: 2px; background-color: black"></span>
+                <h2 style="font-weight: 700">TREATMENT CENTER</h2>
+                <p>Far far away, behind the world mountains, far from the countries Vokalia adn Consonantia, there live the blind texts</p>
+            </div>
       </div>
 </section>
-<section>
+<section class="p-5">
     <div class="row">
         <div class="col-md-6">
-            <img src="https://placeimg.com/640/480/any" style="height: 300px" alt="">
+            <div class="text-center">
+                <img src="https://placeimg.com/640/480/any" style="max-height: 500px" class="img-fluid rounded " alt="">
+            </div>
         </div>
         <div class="col-md-6">
             <h1>Benefits of Doing Treatments</h1>
@@ -55,13 +56,13 @@
     <h1 align="center">Gallery</h1>
     <div class="row d-flex justify-content-around">
         <div class="col-md-3 ">
-            <img src="https://placeimg.com/640/480/any" style="height: 300px" alt="">
+            <img src="https://placeimg.com/640/480/any" class="img-fluid" style="height: 300px" alt="">
         </div>
         <div class="col-md-3">
-            <img src="https://placeimg.com/640/480/any"  style="height: 300px" alt="">
+            <img src="https://placeimg.com/640/480/any" class="img-fluid"  style="height: 300px" alt="">
         </div>
         <div class="col-md-3">
-            <img src="https://placeimg.com/640/480/any"  style="height: 300px" alt="">
+            <img src="https://placeimg.com/640/480/any"  class="img-fluid" style="height: 300px" alt="">
         </div>
 
     </div>

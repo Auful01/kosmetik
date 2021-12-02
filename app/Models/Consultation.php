@@ -19,4 +19,14 @@ class Consultation extends Model
         'confirm',
         'status'
     ];
+
+    /**
+     * Get the doctor that owns the Consultation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class, 'doctor_id');
+    }
 }

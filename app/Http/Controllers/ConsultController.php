@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Consultation;
 use App\Models\Doctor;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class ConsultController extends Controller
      */
     public function index()
     {
-        //
+        $consult = Consultation::with('doctor')->get();
+        return view('user.consult', ['consult' => $consult]);
     }
 
     /**
@@ -36,7 +38,15 @@ class ConsultController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = auth()->user()->id;
+        Consultation::create([
+            'user_id' => $user,
+            'doctor_id' => $request->doctor_id,
+            'date' => $request->date,
+            'time' => $request->time,
+            'price' => $request->price,
+        ]);
+        return redirect()->route('reservasi.index');
     }
 
     /**

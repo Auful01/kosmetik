@@ -2,10 +2,10 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-            <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
+            <a href="{{url('profile', Auth::user()->id )}}" class="d-block">{{Auth::user()->name}}</a>
         </div>
     </div>
 
@@ -95,15 +95,31 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{route('reservasi.index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-money-bill-wave"></i>
+            <li class="nav-item menu-open">
+                <a href="#" class="nav-link active">
+                    <i class="fas fa-money-bill-wave"></i>
                     <p>
                         Transaction
+                        <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('reservasi.index')}}" class="nav-link {{Request::segment(2) == 1 ? 'active' : ''}}">
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>Reservasi</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('doctor-consul.index')}}" class="nav-link {{Request::segment(2) == 2? 'active' : ''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Consultation</p>
+                        </a>
+                    </li>
+
+                </ul>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="pages/widgets.html" class="nav-link">
                     <i class="nav-icon fas fa-clipboard-list"></i>
                     <p>
@@ -111,7 +127,7 @@
 
                     </p>
                 </a>
-            </li>
+            </li> --}}
             {{-- <li class="nav-item">
                 <a href="pages/widgets.html" class="nav-link">
                     <i class="nav-icon fas fa-power-off"></i>
@@ -158,14 +174,29 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="/reservasi-ad" class="nav-link">
-                    <i class="nav-icon fas fa-clipboard-list"></i>
+            <li class="nav-item menu-open">
+                <a href="#" class="nav-link {{Request::segment(1) == 'doctor-consul' ? 'active' : ''}}">
+                    <i class="fas fa-money-bill-wave"></i>
                     <p>
-                        Reservasi
-
+                        Transaction
+                        <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('treatment-user.show', 1)}}" class="nav-link {{Request::segment(2) == 1 ? 'active' : ''}}">
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>Reservasi</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{url('treatment-user/2')}}" class="nav-link {{Request::segment(2) == 2? 'active' : ''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Consultation</p>
+                        </a>
+                    </li>
+
+                </ul>
             </li>
 
             @endif

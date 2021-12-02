@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
 use App\Models\Reservation;
+use App\Models\Treatment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class OrderController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,12 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $reservation = Reservation::all();
-        return view('user.transaction', ['reservation' => $reservation]);
+        $treatment = DB::table('treatments')->count('id');
+        $dokter = DB::table('doctors')->select('id')->count();
+        $reserv = DB::table('reservation')->select('id')->count();
+        $consult = DB::table('consultation')->select('id')->count();
+        $reservasi = Reservation::all();
+        return view('admin.dashboard', ['treatment' => $treatment, 'dokter' => $dokter, 'reserv' => $reserv, 'consult' => $consult, 'reservasi' => $reservasi]);
     }
 
     /**
@@ -37,21 +42,13 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
-        $user = auth()->user()->id;
-        Reservation::create([
-            'user_id' => $user,
-            'treatment_id' => $request->treatment_id,
-            'date' => $request->date,
-            'time' => $request->time,
-        ]);
-        return redirect()->route('transaction.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -62,7 +59,7 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -74,7 +71,7 @@ class OrderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -85,7 +82,7 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
