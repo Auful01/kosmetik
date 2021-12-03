@@ -70,7 +70,8 @@ class TreatmentController extends Controller
     public function show($id)
     {
         $treatment = Treatment::with('category')->where('category_id', $id)->get();
-        return view('user.treatments', ['treatment' => $treatment]);
+        $category = Category::find($id);
+        return view('user.treatments', ['treatment' => $treatment, 'category' => $category]);
     }
 
     /**

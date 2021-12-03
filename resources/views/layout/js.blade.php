@@ -99,6 +99,7 @@
             var harga = $(this).data('harga')
             $('.price').val(harga)
         })
+
 </script>
 
  <!-- jQuery -->

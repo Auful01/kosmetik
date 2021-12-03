@@ -1,6 +1,12 @@
 @extends('layout.main')
 
 @section('content')
+<div class="jumbotron"  style="display: flex; justify-content: center; align-items: center;margin-top: -80px ; margin-left: -60px ; max-width: 108%; height: 400px; background-repeat: no-repeat; background-size: cover;background-image: url({{asset('images/jumbotron.png')}});">
+    {{-- <div style="vertical-align: middle"> --}}
+    {{-- </div> --}}
+    <h1 class="display-4" align="center" >Treatment</h1>
+
+  </div>
 <section>
     <div class="card">
         <div class="card-body">
@@ -27,9 +33,21 @@
                         <td>{{$r->date}}</td>
                         <td>{{$r->time}}</td>
                         <td>{{$r->treatment->price}}</td>
-                        <td><select name="confirm" class="form-control" id="">
-                            <option value="0">Belum Dikonfirmasi</option>
-                            <option value="1">Dikonfirmasi</option>
+                        <td><select name="confirm" class="form-control confirm" data-id="{{$r->id}}" id="confirm">
+                            @if ($r->user_confirm == 0)
+                                <option value="0" selected>Batalkan</option>
+                                <option value="1">Menunggu Konfirmasi</option>
+                                <option value="2">Konfirmasi</option>
+                            @elseif ($r->user_confirm == 1)
+                            <option value="0" >Batalkan</option>
+                            <option value="1" selected>Menunggu Konfirmasi</option>
+                            <option value="2">Konfirmasi</option>
+                            @else
+                            <option value="0" >Batalkan</option>
+                            <option value="1" >Menunggu Konfirmasi</option>
+                            <option value="2" selected>Konfirmasi</option>
+                            @endif
+
                         </select></td>
                         <td>
                             @if ($r->status == 0)
@@ -49,5 +67,29 @@
             </table>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+        // $('.confirm').on('click', function () {
+
+        // })
+
+        $('.confirm').on('change', function(){
+            var id = $(this).data('id')
+            var data = $(this).val();
+            console.log('coba', id, data);
+            $.ajax({
+                url : '/confirm',
+                type : 'GET',
+                dataType : 'JSON',
+                data : {
+                    "id" : id,
+                    "data" : data
+                },success:function data(data){
+                    console.log(data.success);
+                }
+            })
+        })
+    </script>
 </section>
 @endsection

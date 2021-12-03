@@ -42,18 +42,19 @@ Route::middleware(['auth', 'role:0'])->group(function () {
     Route::resource('transaction', TransactionController::class);
     Route::resource('order', OrderController::class);
     Route::resource('reservasi', ReservationController::class);
+    Route::get('confirm', [TransactionController::class, 'changeConfirmation']);
 });
 
 Route::middleware(['auth', 'role:1'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index']);
-    Route::get('reservasi-ad', function () {
-        return view('admin.reservasi');
-    });
+    Route::get('reservasi-ad', [ReservationController::class, 'indexAdmin'])->name('reservasi-ad');
+    Route::resource('consul-admin', ConsultController::class);
     Route::resource('customer', CustomerController::class);
     Route::resource('schedule', ScheduleController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('treatment', TreatmentController::class);
     Route::resource('doctor-list', DoctorController::class);
+    Route::get('status', [TransactionController::class, 'changeStatus']);
     // Route::resource('doctor-consul', ConsultController::class);
 });
 

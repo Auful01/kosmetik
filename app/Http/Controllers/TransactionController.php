@@ -95,4 +95,20 @@ class TransactionController extends Controller
         Reservation::find($id)->delete();
         return redirect()->route('transaction.index');
     }
+
+    public function changeConfirmation(Request $request)
+    {
+        $transaksi = Reservation::find($request->id);
+        // return $transaksi;
+        $transaksi->user_confirm = $request->data;
+        $transaksi->save();
+    }
+
+    public function changeStatus(Request $request)
+    {
+        $transaksi = Reservation::find($request->id);
+        // return $transaksi;
+        $transaksi->status = $request->data;
+        $transaksi->save();
+    }
 }
