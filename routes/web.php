@@ -11,6 +11,7 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TreatmentController;
 use App\Http\Controllers\UserController;
+use App\Models\Consultation;
 use Illuminate\Support\Facades\Route;
 use Laravel\Ui\Presets\Vue;
 
@@ -43,18 +44,21 @@ Route::middleware(['auth', 'role:0'])->group(function () {
     Route::resource('order', OrderController::class);
     Route::resource('reservasi', ReservationController::class);
     Route::get('confirm', [TransactionController::class, 'changeConfirmation']);
+    Route::post('reschedule-consult/{id}', [ConsultController::class, 'reschedule'])->name('reschedule-consult');
+    Route::get('consult-confirm', [ConsultController::class, 'changeConfirm']);
 });
 
 Route::middleware(['auth', 'role:1'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index']);
     Route::get('reservasi-ad', [ReservationController::class, 'indexAdmin'])->name('reservasi-ad');
-    Route::resource('consul-admin', ConsultController::class);
+    Route::get('consul-admin', [ConsultController::class, 'indexAdmin'])->name('consul-admin');
     Route::resource('customer', CustomerController::class);
     Route::resource('schedule', ScheduleController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('treatment', TreatmentController::class);
     Route::resource('doctor-list', DoctorController::class);
     Route::get('status', [TransactionController::class, 'changeStatus']);
+    Route::get('consult-status', [ConsultController::class, 'changeStatus']);
     // Route::resource('doctor-consul', ConsultController::class);
 });
 

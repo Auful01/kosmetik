@@ -20,6 +20,11 @@ class ConsultController extends Controller
         return view('user.consult', ['consult' => $consult]);
     }
 
+    public function indexAdmin()
+    {
+        $consult = Consultation::with('doctor', 'user')->get();
+        return view('admin.consult', ['consult' => $consult]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -94,5 +99,27 @@ class ConsultController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function reschedule(Request $request, $id)
+    {
+        $consult = Consultation::find($id);
+        $consult->time = $request->time;
+        $consult->save();
+        return redirect()->route('doctor-consul.index');
+    }
+
+    public function changeStatus(Request $request)
+    {
+        $consult = Consultation::find($request->id);
+        $consult->status = $request->status;
+        $consult->save();
+    }
+
+    public function changeConfirm(Request $request)
+    {
+        $consult = Consultation::find($request->id);
+        $consult->confirm = $request->confirm;
+        $consult->save();
     }
 }

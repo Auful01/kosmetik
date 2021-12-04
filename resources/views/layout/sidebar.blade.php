@@ -190,7 +190,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('doctor-consul.index')}}" class="nav-link {{Request::segment(2) == 2? 'active' : ''}}">
+                        <a href="{{route('consul-admin')}}" class="nav-link {{Request::segment(2) == 2? 'active' : ''}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Consultation</p>
                         </a>

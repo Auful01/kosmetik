@@ -29,4 +29,14 @@ class Consultation extends Model
     {
         return $this->belongsTo(Doctor::class, 'doctor_id');
     }
+
+    /**
+     * Get the user that owns the Consultation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

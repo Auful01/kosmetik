@@ -17,6 +17,7 @@
                     <th>No.</th>
                     <th>Nama Dokter</th>
                     <th>Spesialis</th>
+                    <th>Pasien</th>
                     <th>Tanggal Konsul</th>
                     <th>Waktu Konsul</th>
                     <th>Harga</th>
@@ -30,20 +31,22 @@
                         <td>1</td>
                         <td>{{$c->doctor->name}}</td>
                         <td>{{$c->doctor->specialist}}</td>
+                        <td>{{$c->user->name}}</td>
                         <td>{{$c->date}}</td>
                         <td>{{$c->time}}</td>
                         <td>{{$c->doctor->price}}</td>
-                        <td><select name="confirm" class="form-control" id="">
-                            <option value="0">Belum Dikonfirmasi</option>
-                            <option value="1">Dikonfirmasi</option>
+                        <td><select name="status" class="form-control status" data-id="{{$c->id}}" id="">
+                            <option value="0">Dibatalkan</option>
+                            <option value="1">Diproses</option>
+                            <option value="2">Selesai</option>
                         </select></td>
                         <td>
-                            @if ($c->status == 0)
+                            @if ($c->confirm == 0)
                                 <span class="alert alert-danger">Dibatalkan</span>
-                            @elseif ($c->status == 1)
-                                <span class="alert alert-info">Diproses</span>
+                            @elseif ($c->confirm == 1)
+                                <span class="alert alert-info">Unconfirmed</span>
                             @else
-                            <span class="alert alert-success">Selesai</span>
+                            <span class="alert alert-success">Confirmed</span>
                             @endif
                         </td>
                     </tr>
@@ -56,4 +59,24 @@
         </div>
     </div>
 </section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('.status').on('change', function () {
+        var id = $(this).data('id')
+        var status = $(this).val();
+        console.log(id,status);
+        $.ajax({
+            url : 'consult-status',
+            type : 'GET',
+            dataType : 'JSON',
+            data : {
+                "id" : id,
+                "status" : status
+            },
+            success: function data(data){
+                console.log(data.success);
+            }
+        })
+    })
+</script>
 @endsection
