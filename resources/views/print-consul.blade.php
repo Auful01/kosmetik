@@ -40,6 +40,10 @@
                     <td>Total</td>
                     <td>{{$consult->doctor->price}}</td>
                 </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>{{$consult->status}}</td>
+                </tr>
             </table>
             {{-- </td> --}}
 

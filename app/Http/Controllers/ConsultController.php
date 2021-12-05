@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Consultation;
 use App\Models\Doctor;
 use App\Models\Schedule;
+// use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 
 class ConsultController extends Controller
@@ -121,5 +123,13 @@ class ConsultController extends Controller
         $consult = Consultation::find($request->id);
         $consult->confirm = $request->confirm;
         $consult->save();
+    }
+
+    public function printConsult($id)
+    {
+        // return $id;
+        $consult = Consultation::find($id);
+        $pdf = PDF::loadview('print-consul', compact('consult'))->setPaper('A4', 'portrait');
+        return $pdf->stream();
     }
 }

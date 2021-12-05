@@ -13,32 +13,46 @@
     <!-- <div class="row"> -->
     <div class="text-center">
         <h2 align="center">BeautyCenter</h2>
-        <h3 align="center">Data Konsultasi</h3>
+        <h3 align="center">Data Treatment</h3>
     </div>
     <!-- </div> -->
     <br><br>
     <ul style="list-style: none">
-        <li>Nama Pasien : {{$consult->user->name}}</li>
-        <li>Tanggal Pesan : {{$consult->created_at}} </li>
+        <li>Nama Pasien : {{$treatment->user->name}}</li>
+        <li>Tanggal Pesan : {{$treatment->created_at}} </li>
     </ul>
     <div class="row d-flex justify-content-around">
         <div class="col-md-6">
             <table class="table table-striped">
                 <tr>
-                    <td>Dokter</td>
-                    <td>{{$consult->doctor->name}}</td>
+                    <td>Treatment</td>
+                    <td>{{$treatment->treatment->name}}</td>
                 </tr>
                 <tr>
-                    <td>Spesialis</td>
-                    <td>{{$consult->doctor->specialist}}</td>
+                    <td>Kategori</td>
+                    <td>{{$treatment->treatment->category->category}}</td>
                 </tr>
                 <tr>
-                    <td>Tanggal Konsul</td>
-                    <td>{{$consult->date}}</td>
+                    <td>Tanggal Treatment</td>
+                    <td>{{$treatment->date}}</td>
+                </tr>
+                <tr>
+                    <td>Waktu Treatment</td>
+                    <td>{{$treatment->time}}</td>
                 </tr>
                 <tr>
                     <td>Total</td>
-                    <td>{{$consult->doctor->price}}</td>
+                    <td>{{$treatment->treatment->price}}</td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>@if ($treatment->status == 0)
+                        Dibatalkan
+                        @elseif ($treatment->status == 1)
+                        Proses
+                        @else
+                        Selesai
+                    @endif </td>
                 </tr>
             </table>
             {{-- </td> --}}

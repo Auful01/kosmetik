@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Reservation;
 use App\Models\Transaction;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -110,5 +111,13 @@ class TransactionController extends Controller
         // return $transaksi;
         $transaksi->status = $request->data;
         $transaksi->save();
+    }
+
+    public function printReserv($id)
+    {
+        $treatment = Reservation::find($id);
+        // return $treatment;
+        $pdf = PDF::loadview('print-treatment', compact('treatment'))->setPaper('A4', 'potrait');
+        return $pdf->stream();
     }
 }

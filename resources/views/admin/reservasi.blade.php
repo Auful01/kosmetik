@@ -16,12 +16,14 @@
                 <thead>
                     <th>No.</th>
                     <th>Nama Treatment</th>
+                    <th>Customer</th>
                     <th>Jenis Treatment</th>
                     <th>Tanggal Reservasi</th>
                     <th>Waktu Reservasi</th>
                     <th>Harga</th>
                     <th>Konfirmasi</th>
                     <th>Status</th>
+                    <th>aksi</th>
                 </thead>
                 <tbody>
                     @foreach ($reservation as $r)
@@ -29,6 +31,7 @@
                     <tr class="p-2">
                         <td>1</td>
                         <td>{{$r->treatment->name}}</td>
+                        <td>{{$r->user->name}}</td>
                         <td>{{$r->treatment->category->category}}</td>
                         <td>{{$r->date}}</td>
                         <td>{{$r->time}}</td>
@@ -52,6 +55,7 @@
                             @endif
 
                         </select></td>
+
                         <td>
                             @if ($r->user_confirm == 0)
                                 <span class="alert alert-danger">Dibatalkan</span>
@@ -60,6 +64,9 @@
                             @else
                             <span class="alert alert-success">Dikonfirmasi</span>
                             @endif
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" href="{{route('print-reserv',$r->id)}}">print</a>
                         </td>
                     </tr>
 

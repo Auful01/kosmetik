@@ -23,6 +23,7 @@
                     <th>Harga</th>
                     <th>Konfirmasi</th>
                     <th>Status</th>
+                    <th>Action</th>
                 </thead>
                 <tbody>
                     @foreach ($consult as $c)
@@ -48,6 +49,9 @@
                             @else
                             <span class="alert alert-success">Confirmed</span>
                             @endif
+                        </td>
+                        <td>
+                            <a href="{{route('print-consult',$c->id)}}" class="btn btn-danger">print</a>
                         </td>
                     </tr>
 

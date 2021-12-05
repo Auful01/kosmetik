@@ -63,7 +63,8 @@ Route::middleware(['auth', 'role:1'])->group(function () {
 });
 
 Route::get('/profile/{id}', [UserController::class, 'show']);
-
+Route::get('print-reserv/{id}', [TransactionController::class, 'printReserv'])->name('print-reserv');
+Route::get('print-consult/{id}', [ConsultController::class, 'printConsult'])->name('print-consult');
 // Route::get('reservasi', function () {
 //     return view('user.reservasi');
 // });
