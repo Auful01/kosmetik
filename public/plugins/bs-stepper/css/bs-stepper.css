@@ -17,7 +17,7 @@
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.5;
-  color: #6c757d;
+  color: #000000;
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
@@ -43,7 +43,7 @@
 }
 
 .bs-stepper .step-trigger:focus {
-  color: #007bff;
+  color: #E67E22;
   outline: none;
 }
 
@@ -110,12 +110,12 @@
   margin: .25rem;
   line-height: 1em;
   color: #fff;
-  background-color: #6c757d;
+  background-color: #000000;
   border-radius: 1em;
 }
 
 .active .bs-stepper-circle {
-  background-color: #007bff;
+  background-color: #E67E22;
 }
 
 .bs-stepper-content {

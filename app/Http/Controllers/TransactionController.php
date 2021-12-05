@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Reservation;
 use App\Models\Transaction;
+use App\Models\Treatment;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,8 @@ class TransactionController extends Controller
         $order = Order::with('user')->where('user_id', $user)->get();
         return view('user.transaction', ['order' => $order]);
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -125,6 +128,7 @@ class TransactionController extends Controller
     {
         $reservation = Reservation::find($id);
         $reservation->time = $request->time;
+        $reservation->date = $request->date;
         $reservation->save();
         return redirect()->route('reservasi.index');
     }

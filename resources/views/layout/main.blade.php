@@ -11,6 +11,13 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+    <style>
+
+
+        .main-footer{
+            background-color: #F8C471;
+        }
+    </style>
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -23,7 +30,8 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar elevation-4" style="
+        background-color: #F8C471;">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
                 <img src="{{asset('images/relax.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -61,14 +69,19 @@
                     <h3>Link Populer</h3>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, animi aliquid tenetur aperiam alias sapiente quos vitae odit quam ex in illum repellat assumenda? Corrupti sed dignissimos doloribus quasi eum.</p>
                 </div>
+                <style>
+                    .nav-black{
+                        color: #000000;
+                    }
+                </style>
                 <div class="col-md-2">
                     <h3>Menu</h3>
                     {{-- <ul style=: none"> --}}
-                        <a href="">Home</a><br>
-                        <a href="">About</a><br>
-                        <a href="">Treatments</a><br>
-                        <a href="">Reservasi</a><br>
-                        <a href="">Contact</a><br>
+                        <a href="" class="nav-black">Home</a><br>
+                        <a href="" class="nav-black">About</a><br>
+                        <a href="" class="nav-black">Treatments</a><br>
+                        <a href="" class="nav-black">Reservasi</a><br>
+                        <a href="" class="nav-black">Contact</a><br>
                     {{-- </ul> --}}
                 </div>
                 <div class="col-md-2">
@@ -84,7 +97,7 @@
                             <i class="fas fa-phone-alt"></i>
                         </div>
                         <div class="col-md-10">
-                            085466721345
+                            <a href="https://wa.me/6285466721345" class="nav-black">085466721345</a>
                         </div>
                         <div class="col-md-2">
                             <i class="fas fa-envelope"></i>

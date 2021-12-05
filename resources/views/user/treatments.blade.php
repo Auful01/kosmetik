@@ -18,7 +18,7 @@
 
             <div class="col-md-2">
                 <div class="card" style="width: 18rem;background: rgb(255, 207, 117)">
-                    <img class="card-img-top rounded" src="https://placeimg.com/640/480/any" alt="Card image cap">
+                    <img class="card-img-top rounded" src="{{asset('storage/' . $t->photo)}}" alt="Card image cap">
                     <div class="card-body">
                       <h3 class="">{{$t->name}}</h3>
                       <hr>

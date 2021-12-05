@@ -22,6 +22,12 @@ class ConsultController extends Controller
         return view('user.consult', ['consult' => $consult]);
     }
 
+    public function indexUser($id)
+    {
+        $consult = Consultation::with('doctor', 'user')->where('user_id', $id)->get();
+        return view('user.consult', ['consult' => $consult]);
+    }
+
     public function indexAdmin()
     {
         $consult = Consultation::with('doctor', 'user')->get();

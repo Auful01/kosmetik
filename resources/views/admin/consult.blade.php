@@ -37,9 +37,19 @@
                         <td>{{$c->time}}</td>
                         <td>{{$c->doctor->price}}</td>
                         <td><select name="status" class="form-control status" data-id="{{$c->id}}" id="">
-                            <option value="0">Dibatalkan</option>
+                            @if ($c->status == 0)
+                            <option value="0" selected>Dibatalkan</option>
                             <option value="1">Diproses</option>
                             <option value="2">Selesai</option>
+                            @elseif ($c->status == 1)
+                            <option value="0" >Dibatalkan</option>
+                            <option value="1" selected>Diproses</option>
+                            <option value="2">Selesai</option>
+                            @else
+                            <option value="0" >Dibatalkan</option>
+                            <option value="1" >Diproses</option>
+                            <option value="2" selected>Selesai</option>
+                            @endif
                         </select></td>
                         <td>
                             @if ($c->confirm == 0)

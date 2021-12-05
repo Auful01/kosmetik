@@ -38,11 +38,13 @@ Route::middleware(['auth', 'role:0'])->group(function () {
     Route::get('detail/{id}', [TreatmentController::class, 'showDetail']);
 
     Route::resource('doctor-consul', ConsultController::class);
+    Route::get('consult-user/{id}', [ConsultController::class, 'indexUser'])->name('consult-user');
 
     Route::get('doctor', [DoctorController::class, 'indexUser'])->name('doctor');
     Route::resource('transaction', TransactionController::class);
     Route::resource('order', OrderController::class);
     Route::resource('reservasi', ReservationController::class);
+    Route::get('reservasi-user/{id}', [ReservationController::class, 'indexUser'])->name('reservasi-user');
     Route::get('confirm', [TransactionController::class, 'changeConfirmation']);
     Route::post('reschedule-reserv/{id}', [TransactionController::class, 'reschedule'])->name('reschedule-reserv');
     Route::post('reschedule-consult/{id}', [ConsultController::class, 'reschedule'])->name('reschedule-consult');

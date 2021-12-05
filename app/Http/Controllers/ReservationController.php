@@ -25,6 +25,11 @@ class ReservationController extends Controller
         return view('admin.reservasi', ['reservation' => $reservation]);
     }
 
+    public function indexUser($id)
+    {
+        $reservation = Reservation::with('user', 'treatment')->where('user_id', $id)->get();
+        return view('user.transaction', ['reservation' => $reservation]);
+    }
     /**
      * Show the form for creating a new resource.
      *

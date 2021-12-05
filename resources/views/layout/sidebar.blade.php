@@ -105,13 +105,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{route('reservasi.index')}}" class="nav-link {{Request::segment(2) == 1 ? 'active' : ''}}">
+                        <a href="{{route('reservasi-user', Auth::user()->id)}}" class="nav-link {{Request::segment(2) == 1 ? 'active' : ''}}">
                             <i class="nav-icon fas fa-clipboard-list"></i>
                             <p>Reservasi</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('doctor-consul.index')}}" class="nav-link {{Request::segment(2) == 2? 'active' : ''}}">
+                        <a href="{{route('consult-user', Auth::user()->id)}}" class="nav-link {{Request::segment(2) == 2? 'active' : ''}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Consultation</p>
                         </a>

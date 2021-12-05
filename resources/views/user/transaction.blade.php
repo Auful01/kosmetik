@@ -31,8 +31,8 @@
                         <td>1</td>
                         <td>{{$r->treatment->name}}</td>
                         <td>{{$r->treatment->category->category}}</td>
-                        <td>{{$r->date}}</td>
-                        <td>{{$r->time}} &nbsp; <a class="btn btn-primary btn-reschedule" data-toggle="modal" data-id="{{$r->id}}" data-time="{{$r->time}}" data-url="{{route('reschedule-reserv',$r->id)}}" data-target="#reschedule" title="reschedule"><i class="fas fa-history"></i></a></td>
+                        <td>{{$r->date}} &nbsp; <a class="btn btn-primary btn-reschedule" data-toggle="modal" data-id="{{$r->id}}" data-time="{{$r->time}}" data-date="{{$r->date}}" data-url="{{route('reschedule-reserv',$r->id)}}" data-target="#reschedule" title="reschedule"><i class="fas fa-history"></i></a></td>
+                        <td>{{$r->time}} &nbsp; <a class="btn btn-primary btn-reschedule" data-toggle="modal" data-id="{{$r->id}}" data-time="{{$r->time}}" data-date="{{$r->date}}" data-url="{{route('reschedule-reserv',$r->id)}}" data-target="#reschedule" title="reschedule"><i class="fas fa-history"></i></a></td>
                         <td>{{$r->treatment->price}}</td>
                         <td><select name="confirm" class="form-control confirm" data-id="{{$r->id}}" id="confirm">
                             @if ($r->user_confirm == 0)
@@ -99,7 +99,9 @@
         var id = $(this).data('id')
         var url = $(this).data('url')
         var time = $(this).data('time')
+        var date = $(this).data('date')
         $('.time').val(time)
+        $('.date').val(date)
         $('.url').attr('action',url)
     })
     </script>
@@ -123,6 +125,10 @@
               <div class="form-group">
                   <label for="">Waktu Konsul</label>
                   <input type="time" name="time" class="time form-control" id="time">
+              </div>
+              <div class="form-group">
+                  <label for="">Tanggal Konsul</label>
+                  <input type="date" name="date" class="date form-control" id="date">
               </div>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary">Save changes</button>
