@@ -48,10 +48,11 @@
                             <span class="alert alert-success">Selesai</span>
                             @endif
                         </td>
+                        <td>
+                            <a href="{{route('print-consult',$c->id)}}" class="btn btn-danger">print</a>
+                        </td>
                     </tr>
-                    <td>
-                        <a href="{{route('print-consult',$c->id)}}" class="btn btn-danger">print</a>
-                    </td>
+
                     @endforeach
 
 

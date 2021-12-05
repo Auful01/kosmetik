@@ -32,7 +32,7 @@
                         <td>{{$r->treatment->name}}</td>
                         <td>{{$r->treatment->category->category}}</td>
                         <td>{{$r->date}}</td>
-                        <td>{{$r->time}}</td>
+                        <td>{{$r->time}} &nbsp; <a class="btn btn-primary btn-reschedule" data-toggle="modal" data-id="{{$r->id}}" data-time="{{$r->time}}" data-url="{{route('reschedule-reserv',$r->id)}}" data-target="#reschedule" title="reschedule"><i class="fas fa-history"></i></a></td>
                         <td>{{$r->treatment->price}}</td>
                         <td><select name="confirm" class="form-control confirm" data-id="{{$r->id}}" id="confirm">
                             @if ($r->user_confirm == 0)
@@ -94,6 +94,42 @@
                 }
             })
         })
+
+        $('.btn-reschedule').on('click', function () {
+        var id = $(this).data('id')
+        var url = $(this).data('url')
+        var time = $(this).data('time')
+        $('.time').val(time)
+        $('.url').attr('action',url)
+    })
     </script>
 </section>
+@endsection
+@section('modal')
+<div class="modal fade" id="reschedule" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Reschedule</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="" class="url" method="POST">
+              @csrf
+              {{-- @method('PUT') --}}
+              <input type="text" name="id" class="id" id="id" hidden>
+              <div class="form-group">
+                  <label for="">Waktu Konsul</label>
+                  <input type="time" name="time" class="time form-control" id="time">
+              </div>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
 @endsection

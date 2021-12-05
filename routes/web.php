@@ -44,6 +44,7 @@ Route::middleware(['auth', 'role:0'])->group(function () {
     Route::resource('order', OrderController::class);
     Route::resource('reservasi', ReservationController::class);
     Route::get('confirm', [TransactionController::class, 'changeConfirmation']);
+    Route::post('reschedule-reserv/{id}', [TransactionController::class, 'reschedule'])->name('reschedule-reserv');
     Route::post('reschedule-consult/{id}', [ConsultController::class, 'reschedule'])->name('reschedule-consult');
     Route::get('consult-confirm', [ConsultController::class, 'changeConfirm']);
 });

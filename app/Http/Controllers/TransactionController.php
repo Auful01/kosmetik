@@ -120,4 +120,12 @@ class TransactionController extends Controller
         $pdf = PDF::loadview('print-treatment', compact('treatment'))->setPaper('A4', 'potrait');
         return $pdf->stream();
     }
+
+    public function reschedule(Request $request, $id)
+    {
+        $reservation = Reservation::find($id);
+        $reservation->time = $request->time;
+        $reservation->save();
+        return redirect()->route('reservasi.index');
+    }
 }
