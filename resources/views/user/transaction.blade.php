@@ -22,6 +22,7 @@
                     <th>Harga</th>
                     <th>Konfirmasi</th>
                     <th>Status</th>
+                    <th>aksi</th>
                 </thead>
                 <tbody>
                     @foreach ($reservation as $r)
@@ -57,6 +58,9 @@
                             @else
                             <span class="alert alert-success">Selesai</span>
                             @endif
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" href="{{route('print-reserv',$r->id)}}">print</a>
                         </td>
                     </tr>
 
