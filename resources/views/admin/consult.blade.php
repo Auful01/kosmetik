@@ -1,13 +1,14 @@
 @extends('layout.main')
 
 @section('content')
-<section>
-    <div class="jumbotron"  style="display: flex; justify-content: center; align-items: center;margin-top: -80px ; margin-left: -60px ; max-width: 108%; height: 400px; background-repeat: no-repeat; background-size: cover;background-image: url({{asset('images/jumbotron.png')}});">
-        {{-- <div style="vertical-align: middle"> --}}
-        {{-- </div> --}}
-        <h1 class="display-4" align="center" >Consultation</h1>
+<div class="jumbotron elevation-3"  style="display: flex; justify-content: center; align-items: center;margin-top: -80px ; margin-left: -60px ; max-width: 108%; height: 400px; background-repeat: no-repeat; background-size: cover;background-image: url({{asset('images/jumbotron.png')}});">
+    {{-- <div style="vertical-align: middle"> --}}
+    {{-- </div> --}}
+    <h1 class="display-4" align="center" >Consultation</h1>
 
-      </div>
+  </div>
+<section class="mx-3">
+    
     <div class="card">
         <div class="card-body">
             <h2>Transaksi Konsultasi</h2>
