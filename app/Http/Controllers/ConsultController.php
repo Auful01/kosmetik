@@ -113,6 +113,7 @@ class ConsultController extends Controller
     {
         $consult = Consultation::find($id);
         $consult->time = $request->time;
+        $consult->date = $request->date;
         $consult->save();
         return redirect()->route('doctor-consul.index');
     }

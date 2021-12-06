@@ -31,8 +31,8 @@
                         <td>1</td>
                         <td>{{$c->doctor->name}}</td>
                         <td>{{$c->doctor->specialist}}</td>
-                        <td>{{$c->date}}</td>
-                        <td>{{$c->time}} &nbsp; <a class="btn btn-primary btn-reschedule" data-toggle="modal" data-id="{{$c->id}}" data-time="{{$c->time}}" data-url="{{route('reschedule-consult',$c->id)}}" data-target="#reschedule" title="reschedule"><i class="fas fa-history"></i></a></td>
+                        <td>{{$c->date}} &nbsp; <a class="btn btn-primary btn-reschedule" data-toggle="modal" data-id="{{$c->id}}" data-date="{{$c->date}}" data-time="{{$c->time}}" data-url="{{route('reschedule-consult',$c->id)}}" data-target="#reschedule" title="reschedule"><i class="fas fa-history"></i></a></td>
+                        <td>{{$c->time}} &nbsp; <a class="btn btn-primary btn-reschedule" data-toggle="modal" data-id="{{$c->id}}" data-date="{{$c->date}}" data-time="{{$c->time}}" data-url="{{route('reschedule-consult',$c->id)}}" data-target="#reschedule" title="reschedule"><i class="fas fa-history"></i></a></td>
                         <td>{{$c->doctor->price}}</td>
                         <td><select name="confirm" class="form-control confirm" data-id="{{$c->id}}" id="">
                             <option value="0">Dibatalkan</option>
@@ -86,7 +86,9 @@
         var id = $(this).data('id')
         var url = $(this).data('url')
         var time = $(this).data('time')
+        var date = $(this).data('date')
         $('.time').val(time)
+        $('.date').val(date)
         $('.url').attr('action',url)
     })
 </script>
@@ -110,6 +112,10 @@
               <div class="form-group">
                   <label for="">Waktu Konsul</label>
                   <input type="time" name="time" class="time form-control" id="time">
+              </div>
+              <div class="form-group">
+                  <label for="">Tanggal Konsul</label>
+                  <input type="date" name="date" class="date form-control" id="date">
               </div>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary">Save changes</button>

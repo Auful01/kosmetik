@@ -2,21 +2,18 @@
 
 @section('content')
 <section>
-    <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p class="lead">
-          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-        </p>
+    <div class="jumbotron"  style="display: flex; justify-content: center; align-items: center;margin-top: -80px ; margin-left: -60px ; max-width: 108%; height: 400px; background-repeat: no-repeat; background-size: cover;background-image: url({{asset('images/jumbotron.png')}});">
+        {{-- <div style="vertical-align: middle"> --}}
+        {{-- </div> --}}
+        <h1 class="display-4" align="center" >Doctor Consult</h1>
+
       </div>
 </section>
-<section>
+<section class="pb-5">
     <div class="row">
         <div class="col-md-6">
             <div class="text-center">
-                <img src="https://placeimg.com/640/480/any" class="rounded" alt="">
+                <img src="{{asset('storage/' . $schedule->doctor->photo)}}" class="rounded img-fluid" style="height: 500px" alt="">
             </div>
         </div>
         <div class="col-md-5">

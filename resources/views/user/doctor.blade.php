@@ -9,14 +9,14 @@
 
       </div>
 </section>
-<section>
+<section class="mx-5 pb-5">
     <h1 align="center" class="mb-5">Meet Our Treatment Specialists</h1>
     <div class="row d-flex justify-content-around">
         @foreach ($doctor as $d)
         <div class="col-md-3">
-            <div class="text-center"><img src="{{asset('storage/'. $d->photo)}}" style="height: 300px" alt=""></div>
+            <div class="text-center"><img src="{{asset('storage/'. $d->photo)}}" class="img-fluid rounded" style="height: 300px" alt=""></div>
             <small class="text-muted">Dokter {{$d->specialist}}</small>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex est veritatis doloremque corrupti voluptatum a, cumque, perferendis tempore nihil amet vel. Modi, enim ipsam fugiat molestias deleniti vel sit quis?</p>
+            <p>{{Str::limit('Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex est veritatis doloremque corrupti voluptatum a, cumque, perferendis tempore nihil amet vel. Modi, enim ipsam fugiat molestias deleniti vel sit quis?', 50 , ('....'))}}</p>
             <a href="{{route('doctor-consul.show', $d->id)}}" class="btn btn-warning" >Konsultasi</a>
         </div>
         @endforeach

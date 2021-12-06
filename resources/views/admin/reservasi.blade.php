@@ -7,7 +7,7 @@
     <h1 class="display-4" align="center" >Treatment</h1>
 
   </div>
-<section>
+<section class="mx-3">
     <div class="card">
         <div class="card-body">
             <h2>Transaksi</h2>
