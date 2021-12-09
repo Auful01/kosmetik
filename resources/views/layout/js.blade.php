@@ -20,6 +20,7 @@
         $('.photo').attr('src', photo);
         $('.specialist').val(specialist);
         $('.price').val(price);
+        // console.log(url);
 
     })
 

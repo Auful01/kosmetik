@@ -99,15 +99,15 @@ class DoctorController extends Controller
     {
         // return $request;
         $doctor = Doctor::find($id);
-        // return $doctor;
-        if ($doctor->photo != null) {
-            Storage::delete($doctor->photo);
-        }
+        // return $request->file('photo');
+        // if ($doctor->photo != null) {
+        // }
 
         if ($request->file('photo') != null) {
+            Storage::delete('storage/' . $doctor->photo);
             $img_name = $request->file('photo')->store('photo', 'public');
         } else {
-            $img_name = file_get_contents(asset('images/no-profile.png'));
+            $img_name = $doctor->photo;
         }
 
         $doctor->name = $request->name;
@@ -116,6 +116,7 @@ class DoctorController extends Controller
         $doctor->price = $request->price;
         $doctor->photo = $img_name;
         $doctor->save();
+        // return $doctor;
 
         return redirect()->route('doctor-list.index');
     }
