@@ -12,8 +12,10 @@
         var url = $(this).data('url');
         var photo = $(this).data('photo');
         var price = $(this).data('price');
+        var desc = $(this).data('description');
         var specialist = $(this).data('specialist');
         $('.name').val(name);
+        $('.description').val(desc);
         $('.url').attr('action', url);
         $('.photo').attr('src', photo);
         $('.specialist').val(specialist);

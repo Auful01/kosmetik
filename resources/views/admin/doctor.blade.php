@@ -16,6 +16,7 @@
                     <th>No.</th>
                     <th>Nama Dokter</th>
                     <th>Job</th>
+                    <th>Description</th>
                     <th>Foto</th>
                     <th>Harga</th>
                     <th>Status</th>
@@ -27,13 +28,14 @@
                         <td>{{$d->id}}</td>
                         <td>{{$d->name}}</td>
                         <td>{{$d->specialist}}</td>
+                        <td>{{$d->description}}</td>
                         <td><img src="{{asset('storage/'.$d->photo)}}"  class="rounded" style="height: 100px" alt=""></td>
                         <td>{{$d->price}}</td>
                         <td>
                             {{-- <button class="btn btn-warning btn-editDokter" data-toggle="modal" data-target="#edit-dokter" data-id="{{$d->id}}" ></i></button> --}}
                             <form action="{{route('doctor-list.destroy', $d->id)}}" method="POST">
                             <a href="{{route('schedule.show', $d->id)}}" class="btn btn-primary" ><i class="fas fa-clock"></i></a>
-                            <a class="btn btn-warning btn-editDokter" data-toggle="modal" data-target="#edit-dokter" data-id="{{$d->id}}" data-name="{{$d->name}}" data-specialist="{{$d->specialist}}" data-price="{{$d->price}}" data-photo="{{asset('storage/'. $d->photo)}}" data-url="{{route('doctor-list.update', $d->id)}}"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-warning btn-editDokter" data-toggle="modal" data-target="#edit-dokter" data-id="{{$d->id}}" data-description="{{$d->description}}" data-name="{{$d->name}}" data-specialist="{{$d->specialist}}" data-price="{{$d->price}}" data-photo="{{asset('storage/'. $d->photo)}}" data-url="{{route('doctor-list.update', $d->id)}}"><i class="fas fa-edit"></i></a>
 
                                 @csrf
                                 @method('DELETE')
@@ -66,7 +68,6 @@
         <div class="modal-body">
           <form action="{{route('doctor-list.store')}}" method="POST" enctype="multipart/form-data">
               @csrf
-              @method('PUT')
               <div class="form-group">
                   <label for="">Nama</label>
                   <input type="text" name="name" class="form-control">
@@ -79,6 +80,12 @@
               <div class="form-group">
                   <label for="">Specialist</label>
                   <input type="text" name="specialist" class="form-control" id="specialist">
+                  {{-- <textarea name="specialist" class="form-control" id="" cols="30" rows="10"></textarea> --}}
+              </div>
+              <div class="form-group">
+                  <label for="">Description</label>
+                  <textarea name="description" class="form-control" id="" cols="30" rows="10"></textarea>
+                  {{-- <textarea type="text" name="specialist" class="form-control" id="specialist"> --}}
                   {{-- <textarea name="specialist" class="form-control" id="" cols="30" rows="10"></textarea> --}}
               </div>
               <div class="form-group">
@@ -124,6 +131,12 @@
                   <input type="text" name="specialist" class="form-control specialist" id="specialist">
                   {{-- <textarea name="specialist" class="form-control" id="" cols="30" rows="10"></textarea> --}}
               </div>
+              <div class="form-group">
+                <label for="">Description</label>
+                <textarea name="description" class="form-control description" id="" cols="30" rows="10"></textarea>
+                {{-- <textarea type="text" name="specialist" class="form-control" id="specialist"> --}}
+                {{-- <textarea name="specialist" class="form-control" id="" cols="30" rows="10"></textarea> --}}
+            </div>
               <div class="form-group">
                   <label for="">Harga</label>
                   <input type="text" name="price" class="form-control price">

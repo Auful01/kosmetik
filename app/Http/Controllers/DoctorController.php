@@ -54,6 +54,7 @@ class DoctorController extends Controller
         $doctor = Doctor::create([
             'name' => $request->name,
             'specialist' => $request->specialist,
+            'description' => $request->description,
             'price' => $request->price,
             'photo' => $img_name,
         ]);
@@ -96,7 +97,9 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // return $request;
         $doctor = Doctor::find($id);
+        // return $doctor;
         if ($doctor->photo != null) {
             Storage::delete($doctor->photo);
         }
@@ -109,6 +112,7 @@ class DoctorController extends Controller
 
         $doctor->name = $request->name;
         $doctor->specialist = $request->specialist;
+        $doctor->description = $request->description;
         $doctor->price = $request->price;
         $doctor->photo = $img_name;
         $doctor->save();
