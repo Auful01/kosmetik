@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Treatment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TreatmentController extends Controller
 {
@@ -107,7 +108,22 @@ class TreatmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $treatment = Treatment::with('category')->where('id', $id)->first();
+        // return $treatment->photo;
+        $img_name = $treatment->photo;
+        if ($request->file('photo')) {
+            Storage::delete('storage/' . $treatment->photo);
+            $img_name = $request->file('photo')->store('photo', 'public');
+        }
+
+
+        $treatment->category_id = $request->category_id;
+        $treatment->name = $request->name;
+        $treatment->description = $request->description;
+        $treatment->price = $request->price;
+        $treatment->photo = $img_name;
+        $treatment->save();
+        return redirect()->route('treatment.index');
     }
 
     /**
@@ -118,7 +134,8 @@ class TreatmentController extends Controller
      */
     public function destroy($id)
     {
+        // return $id;
         Treatment::find($id)->delete();
-        return redirect()->route('transaction.index');
+        return redirect()->back();
     }
 }

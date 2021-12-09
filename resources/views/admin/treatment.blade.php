@@ -125,6 +125,7 @@
         <div class="modal-body">
           <form action="" class="url" method="POST" enctype="multipart/form-data">
               @csrf
+              @method('PUT')
               <div class="form-group">
                   <label for="">Nama Treatment</label>
                   <input type="text" name="name" class="form-control name" required>
@@ -145,7 +146,7 @@
               </div>
               <div class="form-group">
                   <label for="">Upload Foto</label>
-                  <input type="file" name="photo" onchange=" readURL(this)" class="form-control" required>
+                  <input type="file" name="photo" onchange=" readURL(this)" class="form-control" >
                   <img id="blah" src="" class="photo" alt="your image" height="100px" />
               </div>
               <div class="form-group">

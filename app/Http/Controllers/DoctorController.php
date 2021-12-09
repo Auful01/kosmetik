@@ -18,6 +18,7 @@ class DoctorController extends Controller
     {
         $doctor = Doctor::all();
         // return $doctor;
+        // $schedule = Schedule::with('doctor')->where('doctor_id', $doctor->id)->get();
         return view('admin.doctor', ['doctor' => $doctor]);
     }
 

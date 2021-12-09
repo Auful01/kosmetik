@@ -35,6 +35,8 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
+        Schedule::where('id', $request->doctor_id)->delete();
+
         Schedule::create([
             'doctor_id' => $request->doctor_id,
             'monday_start' => $request->monday_start,
@@ -60,7 +62,8 @@ class ScheduleController extends Controller
      */
     public function show($id)
     {
-        //
+        $schedule = Schedule::with('doctor')->where('doctor_id', $id)->first();
+        return view('admin.schedule', ['schedule' => $schedule]);
     }
 
     /**

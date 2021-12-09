@@ -59,6 +59,32 @@
         $('.id').val(id)
     })
 
+    $('.btn-editJadwal').on('click', function () {
+            var url = $(this).data('url');
+            var mostart = $(this).data('mostart');
+            var moend = $(this).data('moend');
+            var tustart = $(this).data('tustart');
+            var tuend = $(this).data('tuend');
+            var wedstart = $(this).data('wedstart');
+            var wedend = $(this).data('wedend');
+            var thrstart = $(this).data('thrstart');
+            var thrend = $(this).data('thrend');
+            var frstart = $(this).data('frstart');
+            var frend = $(this).data('frend');
+            $('.url').attr('action',url)
+            $('.mostart').val(mostart)
+            $('.moend').val(moend)
+            $('.tustart').val(tustart)
+            $('.tuend').val(tuend)
+            $('.wedstart').val(wedstart)
+            $('.wedend').val(wedend)
+            $('.thrstart').val(thrstart)
+            $('.thrend').val(thrend)
+            $('.frstart').val(frstart)
+            $('.frend').val(frend)
+            // console.log(url);
+        })
+
     function readURL(input) {
 
             if (input.files && input.files[0]) {
@@ -99,6 +125,8 @@
             var harga = $(this).data('harga')
             $('.price').val(harga)
         })
+
+
 
 </script>
 
